@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
-import 'App.css';
-import LandingPage from 'Pages/LandingPage';
-import TimelinePage from 'Pages/TimelinePage';
+
+import 'Components/App.css';
 import DeEchoDashboard from 'Pages/DeEchoDashboard/DeEchoDashboard.pages';
+import LandingPage from 'Pages/Landing//LandingPage';
+import TimelinePage from 'Pages/Timeline/TimelinePage';
+import { getOneOppFromServer } from 'Utils/getOpp';
+// import { getOneOppFromServer } from '../Utils/getOpp';
+// import './App.css';
+// import LandingPage from '../Pages/Landing//LandingPage';
+// import TimelinePage from '../Pages/Timeline/TimelinePage';
+// import { getOneOppFromServer } from '../Pages/partisans/getOpp';
 
 class App extends Component {
   state = {
-    currentPage: 'dashboard',
+    currentPage: 'landing',
+    currentLean: 'right',
+    opp: '',
+  };
+
+  changePage = (page) => {
+    return (currentLean) => {
+      getOneOppFromServer(currentLean).then((opp) => {
+        this.setState({
+          currentPage: page,
+          currentLean: currentLean || this.state.currentLean,
+          opp,
+        });
+      });
+    };
   };
   render() {
     const { currentPage } = this.state;
     return (
       <div className="App">
-        {currentPage === 'landing' && <LandingPage />}
-        {currentPage === 'timeline' && <TimelinePage />}
-        {currentPage === 'dashboard' && <DeEchoDashboard />}
+        {currentPage === 'landing' && <LandingPage changePage={this.changePage('timeline')} />}
+        {currentPage === 'timeline' && (
+          <TimelinePage politicalLean={this.state.currentLean} partisan={this.state.opp} />
+        )}
       </div>
     );
   }

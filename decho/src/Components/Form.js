@@ -1,21 +1,40 @@
 import React, { Component } from 'react';
-import { Timeline } from 'react-twitter-widgets';
-import 'Components/form.css';
 
 export default class UserForm extends Component {
-  state = {
-    username: null,
-    politicalLean: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      handle: '',
+      politicalLean: 'right',
+    };
+  }
+
+  mySubmitHandler = (event) => {
+    event.preventDefault();
+    alert('You are submitting ' + this.state.handle);
+    console.log(this.state.politicalLean);
+    this.props.changePage(this.state.politicalLean);
   };
 
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    console.log(val);
+    this.setState({ [nam]: val });
+  };
   render() {
     return (
-      <div style={{ border: '1px solid blue' }}>
-        <form action="">
-          <input type="text" value={this.state.username} /> <br />
-          <input type="text" value={this.state.politicalLean} /> <br />
-        </form>
-      </div>
+      <form onSubmit={this.mySubmitHandler}>
+        <h1>@{this.state.handle}</h1>
+        <p>Twitter Handle:</p>
+        <input type="text" name="handle" onChange={this.myChangeHandler} />
+        <p>Political Leaning:</p>
+        <select name="politicalLean" defaultValue="right" onChange={this.myChangeHandler}>
+          <option value="left">Left</option>
+          <option value="right">right</option>
+        </select>
+        <input className={'btn btn-primary'} type="submit" />
+      </form>
     );
   }
 }
