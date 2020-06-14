@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Timeline } from 'react-twitter-widgets';
+import 'Components/form.css';
 
 export default class UserForm extends Component {
   state = {
