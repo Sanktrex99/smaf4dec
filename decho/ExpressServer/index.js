@@ -1,7 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 
-const PORT = 3001;
+const PORT = 3002;
 const expressServer = express();
 
 expressServer.use(cors());
