@@ -10,18 +10,10 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 passport.use(
-  new TwitterStrategy(
-    {
-      consumerKey: 'S9QzCPkMeFOJLehVG6b2FnGC3',
-      consumerSecret: 'AOQLQ9TCYIYdCUWd65MlasuXNtc9TM3tB8n0s3vFgNq9ZCJf7e',
-      callbackURL: 'http://localhost:5000/auth/twitter/callback',
-      includeEmail: true,
-    },
-    (token, tokenSecret, profile, callback) => {
-      console.log(profile.username);
-      return callback(console.log('fired'), profile);
-    }
-  )
+  new TwitterStrategy((token, tokenSecret, profile, callback) => {
+    console.log(profile.username);
+    return callback(console.log('fired'), profile);
+  })
 );
 
 passport.serializeUser(function (user, callback) {

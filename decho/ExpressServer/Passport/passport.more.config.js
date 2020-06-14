@@ -26,20 +26,12 @@ let user = {};
 
 //Twitter Strategy
 passport.use(
-  new TwitterStrategy(
-    {
-      consumerKey: 'S9QzCPkMeFOJLehVG6b2FnGC3',
-      consumerSecret: 'AOQLQ9TCYIYdCUWd65MlasuXNtc9TM3tB8n0s3vFgNq9ZCJf7e',
-      callbackURL: 'http://localhost:5000/auth/twitter/callback',
-      includeEmail: true,
-    },
-    (token, tokenSecret, profile, cb) => {
-      console.log(profile.username);
-      console.log(chalk.blue(JSON.stringify(profile)));
-      user = { ...profile };
-      return cb(console.log('fired'), profile);
-    }
-  )
+  new TwitterStrategy((token, tokenSecret, profile, cb) => {
+    console.log(profile.username);
+    console.log(chalk.blue(JSON.stringify(profile.description)));
+    user = { ...profile };
+    return cb(console.log('fired'), profile);
+  })
 );
 
 passport.serializeUser((user, cb) => {
@@ -66,7 +58,7 @@ app.use(passport.session());
 app.get('/auth/twitter', passport.authenticate('twitter', { display: 'popup' }));
 app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res) => {
   // what route????
-  res.redirect('/profile');
+  res.redirect('/timeline');
 });
 
 ////////////////////////////////////////////////////////////////
