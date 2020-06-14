@@ -11,20 +11,18 @@ const session = require('express-session');
 
 passport.use(
   new TwitterStrategy(
-    // {
-    //   consumerKey: process.env.REACT_APP_TWITTER_APIKEY,
-    //   consumerSecret: process.env.REACT_APP_TWITTER_CONSUMER_SECRET,
-    //   callbackURL: 'http://localhost:5000/auth/twitter/callback',
-    //   includeEmail: true,
-    // },
-
+    {
+      consumerKey: 'S9QzCPkMeFOJLehVG6b2FnGC3',
+      consumerSecret: 'AOQLQ9TCYIYdCUWd65MlasuXNtc9TM3tB8n0s3vFgNq9ZCJf7e',
+      callbackURL: 'http://localhost:5000/auth/twitter/callback',
+      includeEmail: true,
+    },
     (token, tokenSecret, profile, callback) => {
       console.log(profile.username);
       return callback(console.log('fired'), profile);
     }
   )
 );
-// server.use(passport.initialize());
 
 passport.serializeUser(function (user, callback) {
   callback(null, user);
@@ -59,7 +57,6 @@ app.use(passport.session());
 app.get('/', function (req, res) {
   res.render('login');
 });
-// , { user: req.user
 
 app.get('/auth/twitter/', passport.authenticate('twitter'));
 

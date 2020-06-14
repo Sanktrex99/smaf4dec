@@ -22,10 +22,25 @@ const chalk = require('chalk');
 // const SpotifyStrategy = require("passport-spotify").Strategy;
 // const TwitchStrategy = require("passport-twitch.js").Strategy;
 // const keys = require("../config");
-
 let user = {};
-let token = process.env.TWITTER_ACCESS_TOKEN;
-let secret = process.env.TWITTER_ACCESS_TOKEN_SECRET;
+
+//Twitter Strategy
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: 'S9QzCPkMeFOJLehVG6b2FnGC3',
+      consumerSecret: 'AOQLQ9TCYIYdCUWd65MlasuXNtc9TM3tB8n0s3vFgNq9ZCJf7e',
+      callbackURL: 'http://localhost:5000/auth/twitter/callback',
+      includeEmail: true,
+    },
+    (token, tokenSecret, profile, cb) => {
+      console.log(profile.username);
+      console.log(chalk.blue(JSON.stringify(profile)));
+      user = { ...profile };
+      return cb(console.log('fired'), profile);
+    }
+  )
+);
 
 passport.serializeUser((user, cb) => {
   cb(null, user);
@@ -35,22 +50,7 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-//Twitter Strategy
-
-passport.use(
-  new TwitterStrategy((token, tokenSecret, profile, cb) => {
-    console.log(profile.username);
-    return cb(console.log('fired'), profile);
-  })
-);
 const app = express();
-app.use(cors());
-app.use(passport.initialize());
-
-app.get('/auth/twitter', passport.authenticate('twitter', { display: 'popup' }));
-app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res) => {
-  res.redirect('/profile');
-});
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -59,8 +59,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: process.env.SECRET, resave: true, saveUninitialized: true }));
 
+app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('/auth/twitter', passport.authenticate('twitter', { display: 'popup' }));
+app.get('/auth/twitter/callback', passport.authenticate('twitter'), (req, res) => {
+  // what route????
+  res.redirect('/profile');
+});
 
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
