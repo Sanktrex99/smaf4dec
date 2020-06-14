@@ -48,6 +48,7 @@ expressServer.post(
     failureFlash: true,
   })
 );
+
 expressServer.get('/twitter/auth', passport.authenticate('twitter'));
 expressServer.get(
   '/twitter/auth',

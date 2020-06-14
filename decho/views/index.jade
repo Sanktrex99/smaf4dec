@@ -1,8 +1,0 @@
-//- extends layout
-
-block content
-  if user
-    p Hello #{user.username}
-    img(src=user.photos[0].value)
-  else
-    a(href='http://localhost:4000/twitter/auth/callback') Login using twitter!

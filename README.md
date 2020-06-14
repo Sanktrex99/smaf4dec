@@ -8,3 +8,5 @@ de - Echo takes users twitter account, finds hashtags and generates an opposite 
 
 #APIs used
 Twitter
+
+https://dev.to/nileshsanyal/a-complete-guide-to-passport-js-part-1-443

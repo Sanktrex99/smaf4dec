@@ -9,7 +9,7 @@ export default class LandingPage extends Component {
         <a id="twitter-button" class="btn btn-block btn-social btn-twitter">
           <i class="fa fa-twitter"></i> Sign in with Twitter
         </a>
-        <a href="http://localhost:4000/twitter/auth/callback">Sign in with Twitter</a>
+        <a href="http://localhost:5000/auth/twitter">Sign in with Twitter</a>
         <div>
           <UserForm changePage={this.props.changePage} />
         </div>
