@@ -1,4 +1,4 @@
-import React, { Component } from './node_modules/react';
+import React from 'react';
 import 'Components/UserProfile/UserProfile.styles.css';
 
 const UserProfile = ({ username, hashtags }) => {

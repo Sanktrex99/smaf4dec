@@ -1,4 +1,4 @@
-import React from './node_modules/react';
+import React from 'react';
 import 'Components/TimelineFilters/TimelineFilters.styles.css';
 
 const filters = ['Topics', 'HashTags', 'Feed'];
