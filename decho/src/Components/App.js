@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
 import 'Components/App.css';
 import LandingPage from 'Pages/Landing/LandingPage';
-import TimelinePage from 'Pages/Timeline/TimelinePage';
+import TimelinePage from 'Pages/TimelinePage';
 import { getOneOppFromServer } from 'Utils/getOpp';
 // import './App.css';
 // import LandingPage from '../Pages/Landing//LandingPage';
