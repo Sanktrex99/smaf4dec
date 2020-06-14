@@ -7,9 +7,11 @@ export default class UserForm extends Component {
     super(props);
     this.state = {
       handle: '',
-      politicalLean: 'Right',
+      politicalLean: 'right', 
     };
   }
+    /* don't capitalize politicalLean because it is not capitalized in the database*/
+  
 
   mySubmitHandler = (event) => {
     event.preventDefault();
@@ -39,4 +41,5 @@ export default class UserForm extends Component {
       </form>
     );
   }
+  /* don't capitalize the value properties in the option elements because they are not capitalized in the database*/
 }

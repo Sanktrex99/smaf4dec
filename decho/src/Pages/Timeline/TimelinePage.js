@@ -8,8 +8,8 @@ const TimelinePage = ({ politicalLean, partisan }) => {
   console.log(`the partisan is ${partisan.twitterHandle}`);
   // console.log(partisan)
   return (
-    <div class="proto-container">
-      <div className="page-title">De-Echo Feed of {politicalLean === 'Right' ? 'Left' : 'Right'}-Leaning Tweets</div>;
+    <div className="proto-container">
+      <div className="page-title">De-Echo Feed of {politicalLean === 'right' ? 'Left' : 'Right'}-Leaning Tweets</div> {/* the politicalLean value will not be capitalized because it is not capitalized in the database*/}
       <Timeline
         dataSource={{
           sourceType: 'profile',

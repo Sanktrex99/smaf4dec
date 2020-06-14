@@ -3,21 +3,19 @@ import LandingPage from 'Pages/Landing/LandingPage';
 import TimelinePage from 'Pages/Timeline/TimelinePage';
 import { getOneOppFromServer } from 'Utils/getOpp';
 import 'Components/App.css';
-// import { getOneOppFromServer } from '../Utils/getOpp';
-// import LandingPage from '../Pages/Landing//LandingPage';
-// import TimelinePage from '../Pages/Timeline/TimelinePage';
-// import { getOneOppFromServer } from '../Utils/getOpp';
 
 class App extends Component {
   state = {
     currentPage: 'landing',
-    currentLean: 'Right',
+    currentLean: 'right', /* the currentLean value will not be capitalized because it is not capitalized in the database*/
     opp: '',
   };
 
   changePage = (page) => {
     return (currentLean) => {
+      // console.log(`currentLean is ${currentLean}`)
       getOneOppFromServer(currentLean).then((opp) => {
+        console.log(`opp is ${opp}`)
         this.setState({
           currentPage: page,
           currentLean: currentLean || this.state.currentLean,
