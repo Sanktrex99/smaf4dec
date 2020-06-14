@@ -10,7 +10,7 @@ const UserPatterns = () => {
   console.log(hashtags);
   return (
     <div className="UserPatterns-container">
-      <div className="title">{pattern}</div>
+      <div className="title">{pattern.toUpperCase()}</div>
       <p>{`Based on your profile, you use theses hashtags ${hashtags.map((hash) => `${hash} `)} most often`}</p>
     </div>
   );

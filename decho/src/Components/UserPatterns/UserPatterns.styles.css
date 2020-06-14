@@ -1,3 +1,9 @@
 .title {
-  font-size: 10px;
+  font-size: 25px;
+  font-weight: 500;
+}
+.UserPatterns-container {
+  width: 30vw;
+  text-align: left;
+  border: solid grey;
 }
