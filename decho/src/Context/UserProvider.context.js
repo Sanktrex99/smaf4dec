@@ -9,9 +9,11 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('/user');
-      setUser(response).catch((err) => {
-        console.log(err, 'maybe just data and no errors', user);
-      });
+      setUser(response);
+
+      // .catch((err) => {
+      //   console.log(err, 'maybe just data and no errors', user);
+      // });
     };
     fetchData();
   }, []);
