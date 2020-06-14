@@ -7,7 +7,10 @@ de - Echo takes users twitter account, finds hashtags and generates an opposite 
 ## APIs used
 
 Twitter
+https://developer.twitter.com/en/docs/basics/authentication/guides/log-in-with-twitter
 
 ## Libraries used
+
+Passport.js
 
 ## Run this app locally with `yarn start` or `npm start`

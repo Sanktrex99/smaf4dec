@@ -18,6 +18,3 @@ server.use(passport.initialize());
 // Redirect the user to Twitter for authentication.  When complete, Twitter
 // will redirect the user back to the application at
 //   /auth/twitter/callback
-app.get('/auth/twitter', passport.authenticate('twitter'));
-
-app.get('/twitter/auth', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));

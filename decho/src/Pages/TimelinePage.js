@@ -15,6 +15,7 @@ const TimelinePage = ({ politicalLean, partisan }) => {
         }}
         options={{
           height: '800',
+          width: 300,
         }}
       />
     </div>
