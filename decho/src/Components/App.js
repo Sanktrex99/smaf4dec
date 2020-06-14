@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 import 'Components/App.css';
-import DeEchoDashboard from 'Pages/DeEchoDashboard/DeEchoDashboard.pages';
-import LandingPage from 'Pages/Landing//LandingPage';
+import LandingPage from 'Pages/Landing/LandingPage';
 import TimelinePage from 'Pages/Timeline/TimelinePage';
 import { getOneOppFromServer } from 'Utils/getOpp';
-// import { getOneOppFromServer } from '../Utils/getOpp';
 // import './App.css';
 // import LandingPage from '../Pages/Landing//LandingPage';
 // import TimelinePage from '../Pages/Timeline/TimelinePage';
